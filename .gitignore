@@ -1,0 +1,12 @@
+# IDE and OS
+.idea/
+.DS_Store
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Quake game data
+*.pak
