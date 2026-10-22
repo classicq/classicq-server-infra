@@ -20,6 +20,10 @@ write_files:
       Unattended-Upgrade::Automatic-Reboot "true";
       Unattended-Upgrade::Automatic-Reboot-Time "04:00";
 
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+
 packages:
   - unattended-upgrades
 
