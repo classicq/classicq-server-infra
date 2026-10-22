@@ -1,0 +1,26 @@
+#cloud-config
+users:
+  - name: mg
+    shell: /bin/bash
+    sudo: "ALL=(ALL) NOPASSWD:ALL"
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWpPUXv344nUWAMe5EAQMJDwBuwYGZ6GgVcE5oE43un 108034506+mg0x7BE@users.noreply.github.com
+
+write_files:
+  - path: /etc/ssh/sshd_config.d/00-hardening.conf
+    content: |
+      PermitRootLogin no
+      PasswordAuthentication no
+      KbdInteractiveAuthentication no
+  - path: /etc/apt/apt.conf.d/52unattended-upgrades-local
+    content: |
+      Unattended-Upgrade::Origins-Pattern {
+              "origin=Debian,codename=${distro_codename}-updates";
+      };
+      Unattended-Upgrade::Automatic-Reboot "true";
+      Unattended-Upgrade::Automatic-Reboot-Time "04:00";
+
+packages:
+  - unattended-upgrades
+
+timezone: Europe/Berlin
