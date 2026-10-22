@@ -2,7 +2,7 @@ resource "hcloud_firewall" "qw" {
   name = "qw-firewall"
 
   apply_to {
-    server = 165491269
+    server = hcloud_server.qw.id
   }
 
   rule {
